@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="list-group">
+      <!--<a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers">-->
+       <!--Supongamos que ahora queremos añadir un query parameter para decidir si un servidor puede ser modificado o no (en inglés, edit). 
+      la propiedad queryParams, que espera un objecto de JavaScript (en adelante, JS), donde definiremos key-value pairs de los parámetros que queremos añadir.-->
+        <!--Permitir todos edit:
+          <a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers"
+        [routerLink]="['/servers', 3, 'edit']"> SI sale fallo añadir import {RouterModule} from '@angular/router'; en module servers y ponerlo en import-->
+       <!--key = allowEdit
+value = 1
+Puedes probar también a añadir otro key-value pair, y verás como se añade a la query de la URL, separada por el símbolo &,
+  <a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers"
+        [routerLink]="['/servers', 3, 'edit']" [queryParams]="{allowEdit: '1', allowDelete: '2'}">
+      -->
+       <!-- <a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers"
+        [routerLink]="['/servers', 3, 'edit']" [queryParams]="{allowEdit: '1'}">
+        {{ server.name }}-->
+        <!-- fragment,  que espera un string. Tiene dos modalidades:
+
+modo con property binding: [fragment]="'loading'"
+modo sin property binding: fragment="loading"
+Por simplicidad, a mí me gusta más sin property binding, así que así lo añado.-->
+     <!-- <a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers"
+    [routerLink]="['/servers', 3, 'edit']" [queryParams]="{allowEdit: '1'}"
+    fragment="loading">
+  En los queryParams del servers.component.html, hacemos la propiedad allowEdit más dinámica, eliminando la posibilidad de que siempre sea true (1). Vamos a decidir si admitimos o no editar un servidor dependiendo del ID del servido-->
+    <a href="#" class="list-group-item list-group-item-action" *ngFor="let server of servers"
+    [routerLink]="['/servers', server.id]" [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"><!--[routerLink]="['/servers', server.id]" [queryParams]="{allowEdit: '1'}" fragment="loading">-->
+    {{server.name}}
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-4"> 
+   <!--Es decir, que las child routes necesitan un outlet independiente, porque cuando una ruta se convierte en "ruta madre", necesita ofrecer a sus rutas hijas un punto al que engancharse, y eso es el outlet.
+
+4. Para eso, vamos al servers.component.html y reemplazamos la parte donde cargamos el EditServerComponent y el ServerComponent por el router-outlet, tan sencillo como eso.
+<button class="btn btn-info" (click)="onReload()">Reload Servers</button>
+
+    <app-edit-server></app-edit-server>
+    <hr>
+    <app-server></app-server>
+  </div>
+  --> 
+  <div class="col-sm-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
