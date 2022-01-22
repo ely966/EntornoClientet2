@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-guard-servi/auth.service';
-import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +10,7 @@ import { UsersService } from '../users/users.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router:Router,private authService: AuthService, public userService: UsersService) { }
+  constructor(private router:Router,private authService: AuthService) { }
   
   onlogin() {
     this.authService.login();
@@ -33,11 +32,5 @@ export class HomeComponent implements OnInit {
    
     // navigation to Servers page
     this.router.navigate(['/servers', id, 'edit'], { queryParams: { allowEdit: '8' }, fragment: 'loading' });
-  }
-
-  getUserLogged() {
-    this.userService.getUser().subscribe(user => {
-      console.log(user);
-    });
   }
 }

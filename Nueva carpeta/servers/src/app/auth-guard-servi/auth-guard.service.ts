@@ -26,8 +26,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
               return true;
 
             } else {
-//si no esta autentificado o logeado se redirige a:
-              this.router.navigate(['login']); //Se coloca el false porque lo requiere el modo stricto pero ne verdad nunca llega porque lo redirige al /
+
+              this.router.navigate(['/']); //Se coloca el false porque lo requiere el modo stricto pero ne verdad nunca llega porque lo redirige al /
               return false
 
             }

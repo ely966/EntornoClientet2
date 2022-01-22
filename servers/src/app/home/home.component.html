@@ -1,6 +1,18 @@
 <!--cargar todos servidores
 <button class="btn btn-dark" (click)="onLoadServers()">Load servers</button>-->
 <!--Queremos caragr solo 1 servidor-->
+<div class="row">
+    <div class="col col-sm-10 col-md-8">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"> <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">
+          Home
+        </a></li>
+            <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLink]="['/servers']">Servers</a></li>
+            <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLink]="['/users']">Users</a></li>
+        </ul>
+    </div>
+</div>
 <button class="btn btn-dark" (click)="onLoadServer(8)">Load server nº8</button>
-<button class="btn btn-info mx-2" (click)="onlogin()">Login</button><!--simular hacer login-->
+<button class="btn btn-info mx-2" (click)="onlogin()">Login</button>
+<!--simular hacer login-->
 <button class="btn btn-outline-info" (click)="onlogout()">Logout</button>
