@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent,canDeactivate: [CanDeactivateGuard] },//canDeactivate: [CanDeactivateGuard] Evita que puedas ir a las otras pestañas 
   { path: 'login', component: LoginComponent,canDeactivate: [CanDeactivateGuard]},
   { path: 'home', component: HomeComponent,canActivateChild: [AuthGuard] },
-   //haremos que se abran dentro de la misma pagina y que no vaya a una nueva paga. con rutas child
+   
+  //haremos que se abran dentro de la misma pagina y que no vaya a una nueva paga. con rutas child
   
 
    //que si no esta logeado, y va a estas rutas, redirige a login

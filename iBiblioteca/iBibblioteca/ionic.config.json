@@ -1,7 +1,0 @@
-{
-  "name": "iBibblioteca",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
