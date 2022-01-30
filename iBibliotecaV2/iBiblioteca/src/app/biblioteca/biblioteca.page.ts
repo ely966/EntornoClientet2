@@ -29,15 +29,15 @@ export class BibliotecaPage implements OnInit {
  // la promesa devuelve los datos una única vez cuando estos son recibidos mientras que un observable se queda «vigilando» si se han producido cambios//
  mostrarTodosLibros(){ 
   this.serviBiblio.getLibros3().subscribe({
-    next: respuesta=>{
-      this.booksAll=respuesta.docs //recoge la respuesta de getLibros y lo añade a booksAll
+    next: resultadoDeServi=>{
+      this.booksAll=resultadoDeServi.docs //recoge la respuesta de getLibros y lo añade a booksAll
     },
-    error: error=>{
-      console.log(error),//Muestre los errores en la consola
-      console.log(this.booksAll);
+    error: errorMostrar=>{
+      console.log(errorMostrar, this.booksAll)//Muestre los errores en la consola y todo los libros 
+      //console.log(this.booksAll);
     }
   });
-    //(res) => {
+    //next => {
       //this.books = res [Libro];
      // },
      // (error) => {
