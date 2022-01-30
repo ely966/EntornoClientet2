@@ -30,10 +30,10 @@ export class BibliotecaPage implements OnInit {
  mostrarTodosLibros(){ 
   this.serviBiblio.getLibros3().subscribe({
     next: resultadoDeServi=>{
-      this.booksAll=resultadoDeServi.docs //recoge la respuesta de getLibros y lo añade a booksAll
+      this.booksAll=resultadoDeServi.docs;//recoge la respuesta de getLibros (concretamente el array)y lo añade a booksAll
     },
     error: errorMostrar=>{
-      console.log(errorMostrar, this.booksAll)//Muestre los errores en la consola y todo los libros 
+      console.log(errorMostrar)//Muestre los errores en la consola y todo los libros 
       //console.log(this.booksAll);
     }
   });

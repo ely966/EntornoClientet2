@@ -25,13 +25,10 @@ export class BibliotecaServiceService {
     return this.httpClient.get<Libros>(this.url);
     
   }
-  getLibros2(): Observable<Libros> {
-    const parametro = new HttpParams().set("limit", "10"); //*Añadir el limite de 10 libros*
-    return  this.httpClient.get<Libros>(`${this.url}`, {params:parametro}); //esta comilla :` no esta : ' 
-    
-  }
+
   getLibros3(): Observable<Libros> {
-    const parametro = new HttpParams().set("title", "star wars").set("limit", "10"); //*Añadir el limite de 10 libros*
+    const parametro = new HttpParams().set("title", "the lord of the rings") //Seleccionar el titulo libro
+    .set("limit", "10"); //*Añadir el limite de 10 libros*
     return  this.httpClient.get<Libros>(`${this.url2}`, {params:parametro}); //esta comilla :` no esta : ' 
     
   }
