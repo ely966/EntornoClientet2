@@ -7,12 +7,22 @@
 <ion-content>
     <ion-list>
         <!--<ion-item >-->
-        <ion-item *ngFor="let book of books">
-            <ion-thumbnail item-left>
+        <ion-item button icon-right *ngFor="let book of booksAll">
 
-                <img [src]="item?.imagem" />
+            <ion-thumbnail item-left>
+                <img src="" />
             </ion-thumbnail>
-            {{ book }}
+            <ion-label>
+                <!--Para que tenga orden-->
+                <h6>{{ book.title}}</h6>
+                <!--texto se muestra inicial-->
+                <p>Autor: {{book.author_name}}</p>
+                <p>Año: {{book.first_publish_year}}</p>
+                <!--texto se muestra clarito abajo-->
+
+            </ion-label>
+            <ion-icon item-start name="chevron-forward-outline"></ion-icon>
+            <!--icono > a la derecha-->
         </ion-item>
 
         <!-- <ion-thumbnail slot="start">
@@ -22,6 +32,6 @@
     </ion-item>
     -->
     </ion-list>
-
+    <!--<button ion-button full (click)=" mostrarTodosLibros()">Mostrar</button>-->
 
 </ion-content>

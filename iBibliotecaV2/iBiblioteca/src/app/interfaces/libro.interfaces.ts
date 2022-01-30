@@ -1,14 +1,4 @@
-export interface Libros {
-  numFound:      number;
-  start:         number;
-  numFoundExact: boolean;
-  docs:          Doc[];
-  num_found:     number;
-  q:             string;
-  offset:        null;
-}
-
-export interface Doc {
+export interface Libro {
   key:                                   string;
   type:                                  Type;
   seed:                                  string[];

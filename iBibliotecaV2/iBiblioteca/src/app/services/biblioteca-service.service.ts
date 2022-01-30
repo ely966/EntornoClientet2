@@ -1,28 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { NavController, NavParams } from '@ionic/angular';
-import { Libros } from '../interfaces/libro.interfaces';
+import { Libro } from '../interfaces/libro.interfaces';
+import { Libros } from '../interfaces/libros.interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BibliotecaServiceService {
-  url: string = "http://openlibrary.org/search.json?q=the+lord+of+the+rings.json";
-  books : Libros[]=[];
+  url: string = "http://openlibrary.org/search.json?q=the+lord+of+the+rings";
+  url2 : string ="http://openlibrary.org/search.json?";
+  books : Libros;
   httpService: any;
+  libro: Libro;
  
  
 
   constructor(private httpClient: HttpClient) {
-    console.log("hi");
+    console.log("hi, servidor de biblioteca en marcha");
    }
-   mostrarLibros(): Observable<Libros[]>{
-    console.log(this.httpClient.get(this.url));
-    return this.httpClient.get<Libros[]>(this.url);
+ 
+  getLibros(): Observable<Libros> {
+    return this.httpClient.get<Libros>(this.url);
     
   }
-   //mostrarLibros(book) {
-   // this.navCtrl.push('FilmDetailsPage', {libro: book});
-  //}
+  getLibros2(): Observable<Libros> {
+    const parametro = new HttpParams().set("limit", "10"); //*Añadir el limite de 10 libros*
+    return  this.httpClient.get<Libros>(`${this.url}`, {params:parametro}); //esta comilla :` no esta : ' 
+    
+  }
+  getLibros3(): Observable<Libros> {
+    const parametro = new HttpParams().set("title", "star wars").set("limit", "10"); //*Añadir el limite de 10 libros*
+    return  this.httpClient.get<Libros>(`${this.url2}`, {params:parametro}); //esta comilla :` no esta : ' 
+    
+  }
+  ngOninit(){}
+  
 }
