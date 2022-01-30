@@ -32,8 +32,10 @@ export class BibliotecaPage implements OnInit {
     next: respuesta=>{
       this.booksAll=respuesta.docs //recoge la respuesta de getLibros y lo añade a booksAll
     },
-    error: error=>{console.log(error),//Muestre los errores en la consola
-      console.log(this.booksAll);}
+    error: error=>{
+      console.log(error),//Muestre los errores en la consola
+      console.log(this.booksAll);
+    }
   });
     //(res) => {
       //this.books = res [Libro];
