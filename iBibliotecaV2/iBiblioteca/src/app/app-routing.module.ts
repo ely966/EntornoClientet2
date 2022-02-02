@@ -20,6 +20,20 @@ const routes: Routes = [
   {
     path: 'biblioteca',
     loadChildren: () => import('./biblioteca/biblioteca.module').then( m => m.BibliotecaPageModule)
+  },
+  {
+    path: 'detalles',
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
+  {
+    path: 'detalles/:isbnID', //Cuando queramos mandar la key, que se redirigir a la pagina detalles
+    //el nombre tras lso dos :, es lo que hay que poner para recoger el valor
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
+  {
+    path: 'detalles/undefined', //Cuando queramos mandar la key, que se redirigir a la pagina detalles
+    //el nombre tras lso dos :, es lo que hay que poner para recoger el valor
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
   }
 ];
 @NgModule({

@@ -1,0 +1,36 @@
+<ion-header>
+    <!--tnedra un boton par avovler a biblioteca y se mostrara el nombre del libro-->
+    <ion-toolbar>
+        <ion-item button ion-button routerLink="/biblioteca" *ngIf="datosLibro">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+            <ion-title>{{datosLibro.title}}</ion-title>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-card-header>
+
+        </ion-card-header>
+        <ion-card-content>
+
+            <ion-item *ngIf="datosLibro">
+                <ion-label>
+                    <img src="https://covers.openlibrary.org/b/isbn/{{datosLibro.isbn_13}}.jpg" />
+                    <h2>{{ datosLibro.title}}</h2>
+                    <h6>Año: {{datosLibro.publish_date}}</h6>
+                    <h6>ISBN: {{datosLibro.isbn_13}}</h6>
+                    <h6>Editorial : {{datosLibro.publishers}}</h6>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="datosAutor">
+                <ion-label>
+                    <h6>Autor: {{datosAutor.personal_name}}</h6>
+                </ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

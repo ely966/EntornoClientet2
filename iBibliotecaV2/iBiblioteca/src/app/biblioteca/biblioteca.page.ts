@@ -15,6 +15,7 @@ export class BibliotecaPage implements OnInit {
 
 
   booksAll: Array<Libro>;
+  libroBuscado="";
   book: Libro;
 
   constructor( private serviBiblio:BibliotecaServiceService, public navCtrl: NavController, ) { 
@@ -27,7 +28,7 @@ export class BibliotecaPage implements OnInit {
   //**No se usa then, sino subcribe ya que http no devuelve una promesa sino un observable */
  //**Un observable se queda a la espera de recibir datos y nos suscribimos para recibir los datos cuando esten disponibles */
  // la promesa devuelve los datos una única vez cuando estos son recibidos mientras que un observable se queda «vigilando» si se han producido cambios//
- mostrarTodosLibros(){ 
+mostrarTodosLibros(){ 
   this.serviBiblio.getLibros3().subscribe({
     next: resultadoDeServi=>{
       this.booksAll=resultadoDeServi.docs;//recoge la respuesta de getLibros (concretamente el array)y lo añade a booksAll
@@ -37,17 +38,26 @@ export class BibliotecaPage implements OnInit {
       //console.log(this.booksAll);
     }
   });
-    //next => {
-      //this.books = res [Libro];
-     // },
-     // (error) => {
-     //   console.error(error);
-     // }
-    //}
-  
- }
- ngOnInit():void {this.mostrarTodosLibros(); //se nombra para que se ejecute
- }
+}
+
+//Hacer busqueda. Cuando busque, se activara
+buscarLibro(){
+  this.serviBiblio.getLibrosBusquedad(this.libroBuscado).subscribe({//Metodo del servidor de busque por un libro y nos suscribimos para esperar respuesta
+    next: resultado=>{ //Si hay resultado, que se muetsre
+        this.booksAll=resultado.docs;
+    },
+    error: mostrarError=>{
+      console.log(mostrarError);
+    }
+  })
+};
+
+ngOnInit():void {
+  this.buscarLibro(); //se nombra para que se ejecute
+   this.mostrarTodosLibros(); //se nombra para que se ejecute
+   
+}
 
 }
+
 

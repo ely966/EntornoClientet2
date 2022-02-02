@@ -1,16 +1,27 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>biblioteca</ion-title>
+        <ion-item button ion-button routerLink="/home">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+            <ion-title>Biblioteca</ion-title>
+        </ion-item>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <!--Busquedad-->
+    <p>Buscar por titulo o parte del titulo :</p>
+    <form (ngSubmit)="buscarLibro()">
+        <!--Se coloca el metodo que llamaremos-->
+        <input type="text" name="libroBuscado" [(ngModel)]="libroBuscado">
+        <!--Nombre es el identificativo y ese mandaremos que busque-->
+    </form>
+    <!---->
     <ion-list>
         <!--<ion-item >-->
-        <ion-item button icon-right *ngFor="let book of booksAll">
+        <ion-item button icon-right *ngFor="let book of booksAll" [routerLink]="['/detalles', book.isbn[0]]">
 
             <ion-thumbnail item-left>
-                <img src="" />
+                <img src="https://covers.openlibrary.org/b/isbn/{{book.isbn[0]}}.jpg" />
             </ion-thumbnail>
             <ion-label>
                 <!--Para que tenga orden-->
