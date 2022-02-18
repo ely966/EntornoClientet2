@@ -15,6 +15,22 @@
         <input type="text" name="libroBuscado" [(ngModel)]="libroBuscado">
         <!--Nombre es el identificativo y ese mandaremos que busque-->
     </form>
+    <ion-card>
+        <ion-button color="danger" (click)="scanBRcode()" expand="block">
+            Scan Barcode
+        </ion-button>
+    </ion-card>
+
+    <ion-card>
+        <div *ngIf="scannedBarCode">
+            <ion-item>
+                Scanned code output: <strong>{{ scannedBarCode["text"] }}</strong>
+            </ion-item>
+            <ion-item>
+                Scanned code output: <strong>{{ scannedBarCode["format"] }}</strong>
+            </ion-item>
+        </div>
+    </ion-card>
     <!---->
     <ion-list>
         <!--<ion-item >-->

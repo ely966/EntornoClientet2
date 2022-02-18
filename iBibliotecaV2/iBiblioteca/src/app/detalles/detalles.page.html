@@ -23,6 +23,9 @@
                     <h6>Año: {{datosLibro.publish_date}}</h6>
                     <h6>ISBN: {{datosLibro.isbn_13}}</h6>
                     <h6>Editorial : {{datosLibro.publishers}}</h6>
+                    <ion-button (click)="addFavorito(datosLibro)">
+                        <ion-icon item-start name="star"></ion-icon>
+                    </ion-button>
                 </ion-label>
             </ion-item>
             <ion-item *ngIf="datosAutor">
